@@ -26,7 +26,7 @@ SECRET_KEY = '6kx9ftr==8bpu==sqh@y=p=o@=2ev-gp2(s=57$87ex9#g(rc!'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['tawfiq.pythonanywhere.com']
+ALLOWED_HOSTS = ['tawfiq.pythonanywhere.com','127.0.0.1']
 
 
 # Application definition
@@ -37,11 +37,17 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'django.contrib.sites',
     'django.contrib.staticfiles',
     'bootstrap3',
     'accounts',
     'groups',
     'posts',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.facebook',
 ]
 
 MIDDLEWARE = [
@@ -128,3 +134,11 @@ STATICFILES_DIRS =[
 ]
 LOGIN_REDIRECT_URL = 'test'
 LOGOUT_REDIRECT_URL = 'thanks'
+
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
+AUTH_USER_MODEL = 'accounts.UserBase'
+SITE_ID=1

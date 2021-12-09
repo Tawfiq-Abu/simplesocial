@@ -24,8 +24,9 @@ urlpatterns = [
     path('',views.HomePage.as_view(),name='home'),
     path('accounts/',include('accounts.urls',namespace='accounts')),
     path('accounts/',include('django.contrib.auth.urls')),
+    path('accounts/', include('allauth.urls')),
     path('test/',views.TestPage.as_view(),name='test'),
     path('home/',views.ThanksPage.as_view(),name='thanks'),
-      path('posts/', include("posts.urls", namespace="posts")),
+    path('posts/', include("posts.urls", namespace="posts")),
     path('groups/',include("groups.urls", namespace="groups")),
 ]+static(settings.STATIC_URL,document_root=settings.STATIC_ROOT)

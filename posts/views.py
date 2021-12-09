@@ -8,9 +8,10 @@ from django.views import generic
 from braces.views import SelectRelatedMixin
 from . import models
 from . import forms
+from django.conf import settings
 
 from django.contrib.auth import get_user_model
-User = get_user_model()
+User = settings.AUTH_USER_MODEL
 # Create your views here.
 class PostList(SelectRelatedMixin,generic.ListView):
     model = models.Post
